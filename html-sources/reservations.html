@@ -73,6 +73,14 @@
         </form>
       </div>
     </div>
+    <div class="row">
+       <div class="col">
+         <p id="myParagraph">This is some text.</p> 
+         <p>
+           <button class="btn btn-outline-secondary" id="colorButton">Click Me</button>
+         </p>
+       </div> 
+    </div>
   </div>
   <div class="row my-footer">
     <div class="col">
@@ -93,7 +101,10 @@
   "sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/vanillajs-datepicker@1.3.4/dist/js/datepicker-full.min.js"></script>
   <script src="https://unpkg.com/notie"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script>
+    let attention = Prompt();
+
     (function() {
       'use strict';
       window.addEventListener('load', function() {
@@ -112,6 +123,10 @@
       }, false);
     })();
 
+    document.getElementById("colorButton").addEventListener("click", function () {
+        attention.error({msg: "Hello, World"});
+    })
+    
     const elem = document.getElementById('reservation-dates');
     const rangepicker = new DateRangePicker(elem, {
         format: "yyyy-mm-dd"
@@ -122,6 +137,73 @@
         type: msgType,
         text: msg
       })
+    }
+
+    function notifyModel(title, text, icon, confirmButtonText) {
+      Swal.fire({
+        title: title,
+        html: text,
+        icon: icon,
+        confirmButtonText: confirmButtonText
+      })
+    }
+
+    function Prompt() {
+        let toast = function(c) {
+          const {
+            msg = "",
+            icon = "success",
+            position = "top-end",
+          } = c;
+          const Toast = Swal.mixin({
+            toast: true,
+            title: msg,
+            position: position,
+            icon: icon,
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+              toast.onmouseenter = Swal.stopTimer;
+              toast.onmouseleave = Swal.resumeTimer;
+            }
+          });
+          Toast.fire({});
+        }
+
+        let success = function(c) {
+            const {
+              msg = "",
+              title = "",
+              footer = "",
+            } = c;
+            Swal.fire({
+              icon: "success",
+              title: title,
+              text: msg,
+              footer: footer 
+            });
+        }
+
+        let error = function(c) {
+            const {
+              msg = "",
+              title = "",
+              footer = "",
+            } = c;
+            Swal.fire({
+              icon: "error",
+              title: title,
+              text: msg,
+              footer: footer 
+            });
+        }
+
+        return {
+            toast: toast,
+            success: success,
+            error: error,
+        }
     }
   </script
 </body>
