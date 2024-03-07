@@ -3,8 +3,8 @@ package main
 import (
 	"github.com/go-chi/chi"
 	"github.com/go-chi/chi/middleware"
-	"github.com/weiseguy1/gotel/pkg/config"
-	"github.com/weiseguy1/gotel/pkg/handlers"
+	"github.com/weiseguy1/gotel/internal/config"
+	"github.com/weiseguy1/gotel/internal/handlers"
 	"net/http"
 )
 

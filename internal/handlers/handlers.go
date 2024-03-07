@@ -6,9 +6,9 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/weiseguy1/gotel/pkg/config"
-	"github.com/weiseguy1/gotel/pkg/models"
-	"github.com/weiseguy1/gotel/pkg/render"
+	"github.com/weiseguy1/gotel/internal/config"
+	"github.com/weiseguy1/gotel/internal/models"
+	"github.com/weiseguy1/gotel/internal/render"
 )
 
 // Repo the repository used by the handlers
