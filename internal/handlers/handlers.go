@@ -9,6 +9,7 @@ import (
 	"github.com/weiseguy1/gotel/internal/config"
 	"github.com/weiseguy1/gotel/internal/models"
 	"github.com/weiseguy1/gotel/internal/render"
+	"github.com/weiseguy1/gotel/internal/forms"
 )
 
 // Repo the repository used by the handlers
@@ -47,7 +48,13 @@ func (m *Repository) Contact(w http.ResponseWriter, r *http.Request) {
 }
 
 func (m *Repository) Reservation(w http.ResponseWriter, r *http.Request) {
-	render.RenderTemplate(w, r, "make-reservation.page.tmpl", &models.TemplateData{})
+	render.RenderTemplate(w, r, "make-reservation.page.tmpl", &models.TemplateData{
+    Form: forms.New(nil),
+  })
+}
+
+func (m *Repository) PostReservation(w http.ResponseWriter, r *http.Request) {
+
 }
 
 func (m *Repository) Generals(w http.ResponseWriter, r *http.Request) {
